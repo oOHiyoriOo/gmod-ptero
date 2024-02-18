@@ -5,13 +5,8 @@ FROM ubuntu:22.04
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Install dependencies
-# RUN apt-get update && apt-get install -y \
-#     lib32gcc-s1 \
-#     lib32stdc++6 \
-#     ca-certificates \
-#     curl \
-#     software-properties-common \
-#     && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y \
+    iproute2
 
 # Add the SteamCMD installation layer
 RUN adduser --disabled-password --home /home/container container
