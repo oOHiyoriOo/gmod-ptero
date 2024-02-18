@@ -28,4 +28,4 @@ ENV USER=container HOME=/home/container
 WORKDIR /home/container
 
 # Use the provided entrypoint to start the server
-CMD ["/bin/ash", "/entrypoint.sh"]
+CMD ["/bin/bash", "/entrypoint.sh"]
