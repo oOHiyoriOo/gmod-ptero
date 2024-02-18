@@ -28,8 +28,8 @@ ENV USER=container HOME=/home/container
 WORKDIR /home/container
 
 # Download and extract SteamCMD
-RUN mkdir -p /home/container/steamcmd && \
-    curl -sSL https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz | tar -xz -C /home/container/steamcmd
+# RUN mkdir -p /home/container/steamcmd && \
+#    curl -sSL https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz | tar -xz -C /home/container/steamcmd
 
 # i think this is managed by pterodactyl
 # Expose ports (default GMod ports and any additional ones you need)
