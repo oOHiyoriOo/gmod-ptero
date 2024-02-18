@@ -1,2 +1,3 @@
 # gmod-ptero
-PTerodactyl Image to run Gmod Server (TTT)
+Pterodactyl Image to run Gmod Server
+needs x64 Server, no aarm64 support... yet
