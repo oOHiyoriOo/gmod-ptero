@@ -2,9 +2,9 @@
 # steamcmd Base Installation Script
 #
 # Server Files: /mnt/server
-# Image to install with is 'ubuntu:18.04'
 apt -y update
-apt -y --no-install-recommends install curl lib32gcc1 ca-certificates
+apt -y upgrade
+apt -y --no-install-recommends install lib32gcc-s1 lib32stdc++6 ca-certificates curl software-properties-common ash
 
 ## just in case someone removed the defaults.
 if [ "${STEAM_USER}" == "" ]; then
@@ -26,7 +26,7 @@ chown -R root:root /mnt
 export HOME=/mnt/server
 
 ## install game using steamcmd
-./steamcmd.sh +login ${STEAM_USER} ${STEAM_PASS} ${STEAM_AUTH} +force_install_dir /mnt/server +app_update ${SRCDS_APPID} ${EXTRA_FLAGS} +quit ## other flags may be needed depending on install. looking at you cs 1.6
+./steamcmd.sh +login ${STEAM_USER} ${STEAM_PASS} ${STEAM_AUTH} +force_install_dir /mnt/server +app_update ${SRCDS_APPID} ${EXTRA_FLAGS} +quit
 
 ## set up 32 bit libraries
 mkdir -p /mnt/server/.steam/sdk32

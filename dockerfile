@@ -4,14 +4,14 @@ FROM ubuntu:22.04
 # Avoid prompts from apt during build
 ENV DEBIAN_FRONTEND=noninteractive
 
-# Install dependencies necessary for SteamCMD and Garry's Mod
-RUN apt-get update && apt-get install -y \
-    lib32gcc-s1 \
-    lib32stdc++6 \
-    ca-certificates \
-    curl \
-    software-properties-common \
-    && rm -rf /var/lib/apt/lists/*
+# Install dependencies
+# RUN apt-get update && apt-get install -y \
+#     lib32gcc-s1 \
+#     lib32stdc++6 \
+#     ca-certificates \
+#     curl \
+#     software-properties-common \
+#     && rm -rf /var/lib/apt/lists/*
 
 # Add the SteamCMD installation layer
 RUN adduser --disabled-password --home /home/container container
@@ -26,14 +26,6 @@ ENV USER=container HOME=/home/container
 
 # Set the working directory to /home/container
 WORKDIR /home/container
-
-# Download and extract SteamCMD
-# RUN mkdir -p /home/container/steamcmd && \
-#    curl -sSL https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz | tar -xz -C /home/container/steamcmd
-
-# i think this is managed by pterodactyl
-# Expose ports (default GMod ports and any additional ones you need)
-#EXPOSE 27015/udp 27015/tcp 27005/udp 27005/tcp
 
 # Use the provided entrypoint to start the server
 CMD ["/bin/ash", "/entrypoint.sh"]
