@@ -6,7 +6,10 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 # Install dependencies
 RUN apt-get update && apt-get install -y \
-    iproute2
+    iproute2 \
+    gdb \
+    && rm -rf /var/lib/apt/lists/*
+
 
 # Add the SteamCMD installation layer
 RUN adduser --disabled-password --home /home/container container
