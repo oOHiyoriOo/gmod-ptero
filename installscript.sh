@@ -6,6 +6,7 @@ apt -y update
 apt -y upgrade
 apt -y --no-install-recommends install lib32gcc-s1 lib32stdc++6 ca-certificates curl software-properties-common gdb
 
+
 ## just in case someone removed the defaults.
 if [ "${STEAM_USER}" == "" ]; then
     STEAM_USER=anonymous

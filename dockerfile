@@ -10,6 +10,9 @@ RUN apt-get update && apt-get install -y \
     gdb \
     && rm -rf /var/lib/apt/lists/*
 
+RUN dpkg --add-architecture i386 \
+    && apt-get update \
+    && apt-get install -y libc6:i386 libstdc++6:i386
 
 # Add the SteamCMD installation layer
 RUN adduser --disabled-password --home /home/container container
