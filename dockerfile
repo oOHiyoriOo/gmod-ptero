@@ -1,12 +1,17 @@
 # Use the edge version of Alpine Linux as the base image
 FROM ubuntu:22.04
 
+# Avoid prompts from apt during build
+ENV DEBIAN_FRONTEND=noninteractive
+
 # Install dependencies necessary for SteamCMD and Garry's Mod
-RUN apk add --no-cache \
-    libc6-compat \
-    libstdc++ \
+RUN apt-get update && apt-get install -y \
+    lib32gcc-s1 \
+    lib32stdc++6 \
     ca-certificates \
-    curl
+    curl \
+    software-properties-common \
+    && rm -rf /var/lib/apt/lists/*
 
 # Add the SteamCMD installation layer
 RUN adduser --disabled-password --home /home/container container
