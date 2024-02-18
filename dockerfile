@@ -1,5 +1,5 @@
 # Use the edge version of Alpine Linux as the base image
-FROM alpine:edge
+FROM ubuntu:22.04
 
 # Install dependencies necessary for SteamCMD and Garry's Mod
 RUN apk add --no-cache \
