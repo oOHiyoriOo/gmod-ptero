@@ -6,13 +6,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Login to GitHub Container Registry
-      uses: docker/login-action@v1
-      with:
-        registry: ghcr.io
-        username: ${{ github.actor }}
-        password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Build the hello-docker Docker image
-      run: |
-            docker build . --tag ghcr.io/oOHiyoriOo/gmod-ptero:latest
-            docker run ghcr.io/oOHiyoriOo/gmod-ptero:latest
-            docker push ghcr.io/oOHiyoriOo/gmod-ptero:latest
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build and push Docker image
+        run: |
+          docker build . --file Dockerfile --tag ghcr.io/${{ github.repository }}:latest
+          docker push ghcr.io/${{ github.repository }}:latest
